@@ -3,8 +3,8 @@ const { Web3 } = require('web3');
 const { interface, bytecode } = require('./compile');
 
 const provider = new HDWalletProvider(
-  'secret keys',
-  'api'
+  process.env.SECRET_PHRASE_METAMASK,
+  process.env.API_ENDPOINT_INFURA
 );
 const web3 = new Web3(provider);
 
