@@ -18,4 +18,9 @@ contract Lottery {
     return uint(keccak256(abi.encodePacked(block.difficulty, now, players)));
 
     }
+    function pickWinner() public{
+      uint index= random() %players.length;
+      players[index].transfer(address(this).balance);
+
+    }
 }
