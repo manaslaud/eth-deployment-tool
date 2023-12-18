@@ -18,9 +18,19 @@ contract Lottery {
     return uint(keccak256(abi.encodePacked(block.difficulty, now, players)));
 
     }
-    function pickWinner() public{
+    function pickWinner() public restricted{
+      // require(msg.sender==manager); modifier does this 
       uint index= random() %players.length;
       players[index].transfer(address(this).balance);
+      players = new address[](0);
 
     }
+    modifier restricted() {
+            require(msg.sender==manager);
+          _;  
+    }
+    function getPlayers() public view returns (address[]){
+      return players;
+    }
 }
+//test commit 
