@@ -5,22 +5,20 @@ const web3 = new Web3(ganache.provider());
 const { interface, bytecode } = require("../compile");
 
 let accounts;
-let inbox;
+let Lottery;
 
 beforeEach(async () => {
   // Get a list of all accounts
   accounts = await web3.eth.getAccounts();
-  inbox = await new web3.eth.Contract(JSON.parse(interface))
+  Lottery = await new web3.eth.Contract(JSON.parse(interface))
     .deploy({
       data: bytecode,
-      arguments: ["Hi there!"],
     })
     .send({ from: accounts[0], gas: "1000000" });
 });
 
-describe("Inbox", () => {
-  it("deploys a contract", () => {
-    console.log(inbox);
-    console.log(inbox.options.address);
+describe("Lottery Contract Test #1", () => {
+  it("deploys a Lottery contract", () => {
+   assert(Lottery.options.address)
   });
 });

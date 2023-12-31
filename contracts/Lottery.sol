@@ -19,9 +19,9 @@ contract Lottery {
 
     }
     function pickWinner() public restricted{
-      // require(msg.sender==manager); modifier does this 
       uint index= random() %players.length;
-      players[index].transfer(address(this).balance);
+players[index].transfer(address(this).balance);
+
       players = new address[](0);
 
     }
