@@ -21,4 +21,16 @@ describe("Lottery Contract Test #1", () => {
   it("deploys a Lottery contract", () => {
    assert(Lottery.options.address)
   });
+  it("allows one acc to enter",async ()=>{
+    await Lottery.methods.enter().send({
+      from:accounts[0],
+      value:web3.utils.toWei(`0.02`,`ether`)
+    })
+    const players = await Lottery.methods.getPlayers().call({
+      from:accounts[0]
+    })
+    assert.ok(accounts[0]==players[0],`Failed`)
+    assert.ok(1==players.length,`Failed`)
+
+  })
 });
