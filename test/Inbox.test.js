@@ -17,7 +17,7 @@
       .send({ from: accounts[0], gas: "1000000" });
   });
 
-  describe("Lottery Contract Test #1", () => {
+  describe("Lottery Contract Tests", () => {
     it("deploys a Lottery contract", () => {
     assert(Lottery.options.address)
     });
@@ -54,8 +54,6 @@
       assert.ok(accounts[1]==players[0],`Failed 1`)
       assert.ok(accounts[2]==players[1],`Failed 2`)
       assert.ok(accounts[3]==players[2],`Failed 3`)
-      // console.log(players)
-      // console.log(accounts)
       assert.ok(3==players.length,`Failed length test`)
 
     })
