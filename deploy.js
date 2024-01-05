@@ -21,6 +21,7 @@ const deploy = async () => {
     .send({ gas: '1000000', from: accounts[0] });
 
   console.log('Contract deployed to', result.options.address);
+  
   }
   catch(e){
     console.log(e)
