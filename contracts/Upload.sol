@@ -39,5 +39,11 @@ contract Upload {
                 }
         }
         }
-        
+        function display(address _user) external view returns(string[] memory){
+            require(_user==msg.sender || ownership[_user][msg.sender],"You do not have the access to view these files.");
+            return value[_user];
+        }
+        function shareAccess() public view returns (Access[] memory){
+            return accessList[msg.sender];
+        }
 }
